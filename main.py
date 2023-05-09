@@ -8,8 +8,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent
 
 
 class ExcelApp:
-
-    def __init__(self, data_source, database):
+    def __init__(self, data_source, database) -> None:
         self.data_source = data_source
         self.database = database
 
@@ -23,9 +22,11 @@ class ExcelApp:
         return total_result
 
     def print_total(self, total_result: list[tuple]) -> None:
-        print('Рассчетный результат:')
+        print("Рассчетный результат:")
         for row in total_result:
-            print(f'Тотал{" прогнозируемый" if row[1] == "forecast" else ""} {row[0]} = {row[2]}')
+            print(
+                f'Тотал{" прогнозируемый" if row[1] == "forecast" else ""} {row[0]} = {row[2]}'
+            )
 
 
 def data_flow(file: str) -> None:
@@ -35,5 +36,5 @@ def data_flow(file: str) -> None:
     app.print_total(app.calculate())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data_flow(sys.argv[1])
